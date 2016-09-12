@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>dns_pattern_behaviour</name>
+  <version>0.0.0</version>
+  <description>Dynamic Neighbour Selection pattern formation behaviour</description>
+ 
+  <maintainer email="nicholishiell@gmail.com">Nicholi Shiell</maintainer>
+  <author>Nicholi Shiell</author>
+  <license>FREE</license>
+  <url>http://bots.cs.mun.ca/</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+</package>

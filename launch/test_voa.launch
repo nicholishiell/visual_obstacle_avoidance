@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="zumo_comms_node" type="zumo_comms_node.py" name="zumo_comms_node" output="screen"/>
+    <node pkg="compass_node" type="compass_node" name="compass_node" output="screen"/>
+    <node pkg="blob_detector" type="blob_detector" name="blob_detector" output="screen"/>
+    <node pkg="visual_obstacle_avoidance" type="visual_obstacle_avoidance" name="visual_obstacle_avoidance" output="screen"/>
+
+</launch>
