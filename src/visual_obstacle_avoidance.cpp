@@ -22,7 +22,7 @@ bool firstBlobs = false;
 bool blobBeyondThreshold = false;
 float bearingToObstacle = 0.;
 
-float proximityThreshold = 220.;
+float proximityThreshold = 235.;
 
 void BlobBearingsCallback(const bupimo_msgs::BlobArray::ConstPtr& msg){
    
@@ -63,9 +63,10 @@ int main(int argc, char **argv){
  
   ros::Publisher command_pub = n.advertise<bupimo_msgs::VelocityCommand>("obstacleAvoidanceBehaviour", 1000);
 
-  ros::Subscriber blob_Sub = n.subscribe("blobsGlobal", 1000, BlobBearingsCallback);  
+  //ros::Subscriber blob_Sub = n.subscribe("blobsGlobal", 1000, BlobBearingsCallback);
+  ros::Subscriber blob_Sub = n.subscribe("blobsLocal", 1000, BlobBearingsCallback);  
 
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(25);
   
   while (ros::ok()){
     float targetHeading = 0.;
@@ -81,7 +82,8 @@ int main(int argc, char **argv){
 
     if(blobBeyondThreshold){    
       // Travel tangential to the obstacle
-      targetHeading = bearingToObstacle - 90.;
+      if(bearingToObstacle < 0.) targetHeading = bearingToObstacle - 100.;
+      else targetHeading = bearingToObstacle + 100.;
       targetLinearVel = 1.; 
     }
     else{
