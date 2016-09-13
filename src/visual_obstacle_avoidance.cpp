@@ -63,8 +63,8 @@ int main(int argc, char **argv){
  
   ros::Publisher command_pub = n.advertise<bupimo_msgs::VelocityCommand>("obstacleAvoidanceBehaviour", 1000);
 
-  //ros::Subscriber blob_Sub = n.subscribe("blobsGlobal", 1000, BlobBearingsCallback);
-  ros::Subscriber blob_Sub = n.subscribe("blobsLocal", 1000, BlobBearingsCallback);  
+  ros::Subscriber blob_Sub = n.subscribe("blobsGlobal", 1000, BlobBearingsCallback);
+  //ros::Subscriber blob_Sub = n.subscribe("blobsLocal", 1000, BlobBearingsCallback);  
 
   ros::Rate loop_rate(25);
   
@@ -82,8 +82,9 @@ int main(int argc, char **argv){
 
     if(blobBeyondThreshold){    
       // Travel tangential to the obstacle
-      if(bearingToObstacle < 0.) targetHeading = bearingToObstacle - 100.;
-      else targetHeading = bearingToObstacle + 100.;
+      //if(bearingToObstacle < 0.) targetHeading = bearingToObstacle - 100.;
+      //else targetHeading = bearingToObstacle + 100.;
+      targetHeading = bearingToObstacle - 90.;
       targetLinearVel = 1.; 
     }
     else{
